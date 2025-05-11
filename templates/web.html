@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>手机游戏推荐系统</title>
+    <link rel="stylesheet" href="../static/css/style.css">
+    <!-- 添加 Favicon -->
+    <link rel="icon" href="../static/image/logo.png" type="image/png">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="header-left">
+            <!-- 添加 Logo -->
+            <img src="../static/image/logo.png" alt="Logo" class="logo">
+            <h1>手机游戏推荐系统</h1>
+        </div>
+        <div class="header-center">
+            <input type="text" id="search-input" placeholder="搜索手机游戏...">
+            <button id="search-btn">搜索</button>
+        </div>
+        <div class="header-right">
+            <button id="login-button">登录</button>
+            <button id="register-button">注册</button>
+        </div>
+    </header>
+
+    <!-- Navigation -->
+    <nav class="nav">
+        <div class="nav-links">
+            <a href="#" id="home-btn">首页</a>
+            <a href="#" id="recommend-btn">优选游戏</a>
+            <a href="#">排行榜</a>
+            <a href="#">其他功能</a>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="container">
+        <div id="game-list" class="game-list"></div>
+        <div id="pagination" class="pagination">
+            <button id="prev-page-btn">上一页</button>
+            <span id="current-page">1</span>
+            <button id="next-page-btn">下一页</button>
+        </div>
+        <div id="recommendation-results" class="recommendations hidden">
+            <h2>推荐游戏列表</h2>
+            <ul id="recommendation-list"></ul>
+        </div>
+    </div>
+
+    <!-- Modal for Game Details -->
+    <div id="game-modal" class="modal hidden">
+        <div class="modal-content">
+            <span class="close-btn" id="close-modal">&times;</span>
+            <div class="modal-header">
+                <img id="game-image" src="" alt="Game Image" class="game-image">
+                <h2 id="game-title"></h2>
+            </div>
+            <div class="modal-body">
+                <p id="game-rating"><strong>评分:</strong> </p>
+                <p id="game-price"><strong>价格:</strong> </p>
+                <p id="game-description" class="description"><strong>简介:</strong></p>
+            </div>
+        </div>
+    </div>
+
+    <!-- 登录弹窗 -->
+    <div id="login-modal" class="modal hidden">
+        <div class="modal-content">
+            <span class="close" id="close-login-modal">&times;</span>
+            <h2>用户登录</h2>
+            <form id="login-form">
+                <label for="login-username">用户名:</label>
+                <input type="text" id="login-username" name="username" required>
+                <label for="login-password">密码:</label>
+                <input type="password" id="login-password" name="password" required>
+                <button type="submit">登录</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- 注册弹窗 -->
+    <div id="register-modal" class="modal hidden">
+        <div class="modal-content">
+            <span class="close" id="close-register-modal">&times;</span>
+            <h2>用户注册</h2>
+            <form id="register-form">
+                <label for="register-username">用户名:</label>
+                <input type="text" id="register-username" name="username" required>
+                <label for="register-password">密码:</label>
+                <input type="password" id="register-password" name="password" required>
+                <button type="submit">注册</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="../static/js/api.js"></script>
+    <script src="../static/js/page_logic.js"></script>
+    <script src="../static/js/main.js"></script>
+</body>
+</html>

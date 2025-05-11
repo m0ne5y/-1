@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>用户登录</title>
+    <link rel="stylesheet" href="../static/css/style.css">
+</head>
+<body>
+    <header class="header">
+        <h1>用户登录</h1>
+    </header>
+    <main class="container">
+        <form id="login-form">
+            <label for="username">用户名:</label>
+            <input type="text" id="username" name="username" required>
+
+            <label for="password">密码:</label>
+            <input type="password" id="password" name="password" required>
+
+            <button type="submit">登录</button>
+        </form>
+        <p id="login-message" style="color: red; display: none;">登录失败，请检查用户名和密码。</p>
+    </main>
+    <script>
+        document.getElementById('login-form').addEventListener('submit', async (event) => {
+            event.preventDefault();
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+
+            const response = await fetch('/api/login', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ username, password })
+            });
+
+            if (response.ok) {
+                const data = await response.json();
+                alert('登录成功');
+                localStorage.setItem('user_id', data.user_id); // 保存用户 ID
+                window.location.href = '/'; // 跳转到主页
+            } else {
+                const error = await response.json();
+                alert(error.error || '登录失败');
+            }
+        });
+    </script>
+</body>
+</html>
